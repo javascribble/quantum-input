@@ -4,6 +4,11 @@
         <script type="module" src="/test/debug.js"></script>
     </head>
     <body>
-        <quantum-check></quantum-check>
+        <quantum-check>unchecked</quantum-check>
+        <quantum-check state="indeterminate">indeterminate</quantum-check>
+        <quantum-check state="checked">checked</quantum-check>
+        <quantum-check disabled>disabled</quantum-check>
+        <quantum-check state="indeterminate" disabled>disabled indeterminate</quantum-check>
+        <quantum-check state="checked" disabled>disabled checked</quantum-check>
     </body>
 </html>
