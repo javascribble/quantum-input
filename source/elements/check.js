@@ -1,7 +1,6 @@
-import { Component, template, setAttribute } from '../../references/quantum.js';
 import html from '../templates/check.js';
 
-export class Check extends Component {
+export class Check extends quantum.Component {
     #input;
 
     constructor() {
@@ -10,35 +9,30 @@ export class Check extends Component {
         this.#input = this.shadowRoot.querySelector('input');
     }
 
-    static template = template(html);
+    static template = quantum.template(html);
 
-    static attributes = ['state', 'disabled', 'name', 'value'];
+    static get observedAttributes() { return ['state', 'disabled', 'name', 'value']; }
 
-    stateChangedCallback(value) {
-        switch (value) {
-            case 'checked':
-                this.#input.checked = value;
-                break;
-            case 'indeterminate':
-                this.#input.indeterminate = true;
+    attributeChangedCallback(attribute, previousValue, currentValue) {
+        switch (attribute) {
+            case 'state':
+                switch (currentValue) {
+                    case 'checked':
+                        this.#input.checked = currentValue;
+                        break;
+                    case 'indeterminate':
+                        this.#input.indeterminate = true;
+                        break;
+                    default:
+                        this.#input.removeAttribute('checked');
+                        break;
+                }
                 break;
             default:
-                this.#input.removeAttribute('checked');
+                quantum.setAttribute(this.#input, attribute, currentValue);
                 break;
         }
     }
-
-    disabledChangedCallback(value) {
-        setAttribute(this.#input, 'disabled', value);
-    }
-
-    nameChangedCallback(value) {
-        setAttribute(this.#input, 'name', value);
-    }
-
-    valueChangedCallback(value) {
-        setAttribute(this.#input, 'value', value);
-    }
 }
 
-customElements.define('quantum-check', Check);
+customElequantumments.define('quantum-check', Check);
