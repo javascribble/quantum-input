@@ -1,6 +1,7 @@
+import { Component, template, define, setAttribute } from '../import.js';
 import html from '../templates/check.js';
 
-export class Check extends quantum.Component {
+export class Check extends Component {
     #input;
 
     constructor() {
@@ -9,7 +10,7 @@ export class Check extends quantum.Component {
         this.#input = this.shadowRoot.querySelector('input');
     }
 
-    static template = quantum.template(html);
+    static template = template(html);
 
     static get observedAttributes() { return ['state', 'disabled', 'name', 'value']; }
 
@@ -29,10 +30,10 @@ export class Check extends quantum.Component {
                 }
                 break;
             default:
-                quantum.setAttribute(this.#input, attribute, currentValue);
+                setAttribute(this.#input, attribute, currentValue);
                 break;
         }
     }
 }
 
-customElequantumments.define('quantum-check', Check);
+define('quantum-check', Check);
