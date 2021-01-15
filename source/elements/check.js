@@ -1,4 +1,3 @@
-import { Component, template, define, setAttribute } from '../import.js';
 import html from '../templates/check.js';
 
 export class Check extends Component {
