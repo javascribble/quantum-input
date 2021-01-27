@@ -1,5 +1,7 @@
 import html from '../templates/check.js';
 
+const { Component, template, define, setAttribute } = quantum;
+
 export class Check extends Component {
     #input;
 
