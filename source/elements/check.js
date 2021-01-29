@@ -1,19 +1,13 @@
 import html from '../templates/check.js';
 
-const { Component, template, define, setAttribute } = quantum;
-
-export class Check extends Component {
-    #input;
+export class Check extends Quantum {
+    #input = this.shadowRoot.querySelector('input');
 
     constructor() {
         super();
-
-        this.#input = this.shadowRoot.querySelector('input');
     }
 
-    static template = template(html);
-
-    static get observedAttributes() { return ['state', 'disabled', 'name', 'value']; }
+    static get observedAttributes() { return ['name', 'disabled', 'value']; }
 
     attributeChangedCallback(attribute, previousValue, currentValue) {
         switch (attribute) {
@@ -30,11 +24,8 @@ export class Check extends Component {
                         break;
                 }
                 break;
-            default:
-                setAttribute(this.#input, attribute, currentValue);
-                break;
         }
     }
 }
 
-define('quantum-check', Check);
+Check.define('quantum-check', html);
