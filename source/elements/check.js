@@ -1,5 +1,3 @@
-import html from '../templates/check.js';
-
 export class Check extends Quantum {
     #input = this.shadowRoot.querySelector('input');
 
@@ -27,5 +25,3 @@ export class Check extends Quantum {
         }
     }
 }
-
-Check.define('quantum-check', html);
