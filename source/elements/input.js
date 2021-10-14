@@ -1,6 +1,6 @@
-import check from '../templates/check.js';
+import input from '../templates/input.js';
 
-export class Check extends Quantum {
+export class Input extends Quantum {
     #input = this.shadowRoot.querySelector('input');
 
     constructor() {
@@ -28,4 +28,4 @@ export class Check extends Quantum {
     }
 }
 
-Check.define('quantum-check', check);
+Input.define('quantum-input', input);
